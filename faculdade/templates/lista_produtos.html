@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Professores</title>
+</head>
+
+<body>
+    <h1>Professores</h1>
+    <ul>
+        {% for produto in produtos %}
+        <li>{{ produto.nome }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'index' %}">Voltar</a>
+</body>
+
+</html>
