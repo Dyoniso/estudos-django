@@ -5,7 +5,7 @@ from .forms import ProdutoForm
 # Create your views here.
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'app/index.html')
 
 def lista_produtos(request):
     produtos = Produto.objects.all()
