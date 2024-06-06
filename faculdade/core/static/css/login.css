@@ -1,0 +1,25 @@
+.login-container {
+    width: 450px;
+    padding: 8px;
+    border: 1px solid;
+    border-radius: 8px;
+}
+
+.main-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.title-content {
+    text-align: center;
+}
+
+.title-content h1 {
+    font-size: 52px;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}

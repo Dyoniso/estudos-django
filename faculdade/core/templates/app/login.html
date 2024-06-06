@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% include "../model/head.html" with page_title="Controle de Pedidos - Login" %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+
+<body>
+
+    <main class="main-container">
+        <div class="title-content">
+            <h1> Login </h1>
+            <h2> Entre com sua credenciais para fazer login no sistema </h2>
+        </div>
+        <section class="login-container">
+            <form class="form-container" action="/login/efetuar" method="post">
+                {% csrf_token %}
+                
+                <div class="form-row">
+                    <div class="input-data">
+                        <input type="text" name="login" id="login" required>
+                        <div class="underline"></div>
+                        <label for="login">Login</label>
+                     </div>
+                </div>
+                <div class="form-row">
+                    <div class="input-data">
+                        <input type="password" name="senha" id="senha" required>
+                        <div class="underline"></div>
+                        <label for="senha">Senha</label>
+                     </div>
+                </div>
+
+                <div class="modal-btn">
+                    <button class="btn btn-primary" style="width: 100%;"> Entrar </button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    {% include "../model/footer.html" %}
+</body>
+
+</html>

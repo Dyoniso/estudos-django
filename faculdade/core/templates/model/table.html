@@ -1,0 +1,23 @@
+<table class="table">
+    <thead>
+        <tr>
+            {% for obj in produtos_columns %}
+                <th scope="col"> {{obj}} </th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for obj in produtos %}
+            <tr>
+                <th> {{ obj.id }} </th>
+                <th> {{ obj.nome }} </th>
+                <th> {{ obj.custo }} </th>
+                <th> {{ obj.valor }} </th>
+            </tr>
+        {% empty %}
+
+        <h3> Nenhum produto foi cadastrado </h3>
+
+        {% endfor %}
+    </tbody>
+</table>

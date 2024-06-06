@@ -1,0 +1,27 @@
+<header class="topbar">
+    <div class="topbar-content">
+        <div class="topbar-title">
+            <h1>Controle de Pedidos</h1>
+        </div>
+        <div class="user-content">
+            {% if logado %}
+                <div class="user-name"> {{user_name}} </div>
+            {% else %}
+                <div class="login-content">
+                    <button> Logar </button>
+                    <button> Cadastrar </button>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <nav class="breadcrumb">
+        <div class="breadcrumb-title">
+            <h2> {{bread_name}} </h2>
+        </div>
+        <div class="breadcrumb-button">
+            <a href="#modal-template" rel="modal:open"> 
+                <button class="btn btn-light"> {{bread_button_name}} </button>
+            </a>
+        </div>
+    </nav>
+</header>

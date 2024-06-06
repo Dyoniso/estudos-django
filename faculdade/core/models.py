@@ -12,7 +12,7 @@ class Cliente(models.Model):
         return self.nome_completo
 
 class Produto(models.Model):
-    id = models.CharField(max_length=20, primary_key=True)
+    id = models.IntegerField(primary_key=True)
     nome = models.CharField(max_length=100)
     custo = models.IntegerField()
     valor = models.IntegerField()
