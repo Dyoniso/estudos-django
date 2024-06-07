@@ -4,60 +4,22 @@
 <html>
 
 <head>
-    <title>Faculdade</title>
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+    {% include "../model/head.html" with page_title="Controle de Pedidos - Listagem de Pedidos" %}
 </head>
 
 <body>
 
-    <header class="topbar">
-        <nav class="navigator">
-            <ul class="nav-options">
-                <li class="nav-item">
-                    <h1>
-                        Controle de Caixa
-                    </h1>
-                </li>
-                <li class="nav-item">
-                    <button>
-                        Novo Pedido
-                    </button>
-                </li>
-            </ul>
-        </nav>
-    </header>
+    {% include "../model/header.html" with logado=0 bread_name="Pedidos" bread_button_name="Novo Pedido" link_content='cadastro/pedido/' %}
 
     <main class="main-container">
         <section class="pedido-container">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col"> Código </th>
-                        <th scope="col"> Cliente </th>
-                        <th scope="col"> Total </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th> 1 </th>
-                        <th> Chris </th>
-                        <th> 22 </th>
-                    </tr>
-                </tbody>
-            </table>
+
+            {% include "../model/table.html" with arr_columns=pedido_columns arr=pedidos template=2 %}
+
         </section>
     </main>
 
-    <footer class="footer-container">
-        <section>
-            <ul>
-                <li> Feito por Pedro.Santos 7dz </li>
-                <li>
-                    <a target="_blank" href="https://github.com/Dyoniso"> Siga-me no Github ❤️ </a>
-                </li>
-            </ul>
-        </section>
-    </footer>
+    {% include "../model/footer.html" %}
 </body>
 
 </html>

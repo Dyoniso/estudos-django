@@ -1,22 +1,31 @@
 <table class="table">
     <thead>
         <tr>
-            {% for obj in produtos_columns %}
+            {% for obj in arr_columns %}
                 <th scope="col"> {{obj}} </th>
             {% endfor %}
         </tr>
     </thead>
     <tbody>
-        {% for obj in produtos %}
+        {% for obj in arr %}
+            {% if template == 1 %}
             <tr>
                 <th> {{ obj.id }} </th>
                 <th> {{ obj.nome }} </th>
                 <th> {{ obj.custo }} </th>
                 <th> {{ obj.valor }} </th>
             </tr>
+            {% elif template == 2 %}
+            <tr>
+                <th> {{ obj.id }} </th>
+                <th> {{ obj.cliente_nome_completo }} </th>
+                <th> {{ obj.cliente_telefone }} </th>
+                <th> {{ obj.id_produto }} </th>
+            </tr>
+            {% endif %}
         {% empty %}
 
-        <h3> Nenhum produto foi cadastrado </h3>
+        <h3> Nenhuma informação foi encontrada! </h3>
 
         {% endfor %}
     </tbody>

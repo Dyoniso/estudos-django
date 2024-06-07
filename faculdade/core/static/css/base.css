@@ -160,8 +160,12 @@ a:hover {
     font-size: 17px;
     border-bottom: 2px solid rgba(0,0,0, 0.12);
 }
-.input-data input:focus ~ label, .textarea textarea:focus ~ label,
-.input-data input:valid ~ label, .textarea textarea:valid ~ label{
+.input-data input:focus ~ label, 
+.input-data input:valid ~ label, 
+.textarea textarea:focus ~ label, 
+.textarea textarea:valid ~ label, 
+.input-data textarea:focus ~ label, 
+.input-data textarea:valid ~ label {
     transform: translateY(-20px);
     font-size: 14px;
     color: var(--color-accent);
@@ -205,6 +209,12 @@ a:hover {
 .textarea textarea:focus ~ .underline:before,
 .textarea textarea:valid ~ .underline:before{
     transform: scale(1);
+}
+
+select {
+    padding: 8px;
+    font-size: 18px;
+    border-radius: 8px;
 }
 
 @media (max-width: 700px) {

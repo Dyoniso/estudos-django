@@ -4,60 +4,62 @@
 <html>
 
 <head>
-    <title>Faculdade</title>
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+    {% include "../model/head.html" with page_title="Controle de Pedidos - Listagem de Pedidos" %}
+    <link rel="stylesheet" href="{% static 'css/cadastro_pedido.css' %}">
 </head>
 
 <body>
 
-    <header class="topbar">
-        <nav class="navigator">
-            <ul class="nav-options">
-                <li class="nav-item">
-                    <h1>
-                        Controle de Caixa
-                    </h1>
-                </li>
-                <li class="nav-item">
-                    <button>
-                        Novo Pedido
-                    </button>
-                </li>
-            </ul>
-        </nav>
-    </header>
+    {% include "../model/header.html" with logado=0 bread_name="Cadastro Geral" %}
 
     <main class="main-container">
-        <section class="pedido-container">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col"> Código </th>
-                        <th scope="col"> Cliente </th>
-                        <th scope="col"> Total </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th> 1 </th>
-                        <th> Chris </th>
-                        <th> 22 </th>
-                    </tr>
-                </tbody>
-            </table>
+        <section class="title-content">
+            <h1> Novo Pedido </h1>
+            <h2> Preencha os campos para realizar o seu pedido. </h2>
+        </section>
+
+        <section class="form-pedido">
+            <form class="form-container" action="/cadastro/pedido/" method="post">
+                {% csrf_token %}
+                
+                <div class="form-row">
+                    <div class="input-data">
+                        <input type="text" name="cliente_nome_completo" id="cliente_nome_completo" required>
+                        <div class="underline"></div>
+                        <label for="cliente_nome_completo">Nome Completo</label>
+                     </div>
+                </div>
+                <div class="form-row">
+                    <div class="input-data">
+                        <input type="tel" id="cliente_telefone" name="cliente_telefone" required>
+                        <div class="underline"></div>
+                        <label for="cliente_telefone">Telefone</label>
+                     </div>
+                </div>
+                <div class="form-row">
+                    <div class="input-data">
+                        <input type="email" name="cliente_email" id="cliente_email" required>
+                        <div class="underline"></div>
+                        <label for="cliente_email">E-mail</label>
+                     </div>
+                </div>
+                <div class="form-row">
+                    <label for="id_produto">Selecionar Produto:</label>
+                    <select name="id_produto" id="id_produto">
+                        {% for obj in produtos %}
+                            <option value="{{obj.id}}"> {{obj.id}} - {{obj.nome}} - R$ {{obj.valor}} </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="modal-btn">
+                    <button class="btn btn-primary"> Realizar Compra </button>
+                </div>
+            </form>
         </section>
     </main>
 
-    <footer class="footer-container">
-        <section>
-            <ul>
-                <li> Feito por Pedro.Santos 7dz </li>
-                <li>
-                    <a target="_blank" href="https://github.com/Dyoniso"> Siga-me no Github ❤️ </a>
-                </li>
-            </ul>
-        </section>
-    </footer>
+    {% include "../model/footer.html" %}
 </body>
 
 </html>

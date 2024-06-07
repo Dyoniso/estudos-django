@@ -1,8 +1,8 @@
 from django.urls import reverse
 from urllib.parse import urlencode
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Cliente, Produto, Pedido, Carrinho
-from .forms import ProdutoForm
+from .models import Produto, Pedido
+from .forms import ProdutoForm, PedidoForm
 from django.http import HttpResponseNotAllowed
 
 # Create your views here.
@@ -23,10 +23,39 @@ def efetuar_login(request):
     return HttpResponseNotAllowed(['POST'])
 
 def cadastro_pedido(request):
-    return render(request, 'app/cliente_cadastro_pedido.html')
+    if request.method == "GET":
+        produtos = Produto.objects.all()
+
+        return render(request, 'app/cliente_cadastro_pedido.html', {
+            'produtos' : produtos
+        })
+    
+    elif request.method == "POST":
+        form = PedidoForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            msg = 'Pedido realizado com sucesso!'
+            status = 'success'
+        else:
+            msg = 'Erro ao adicionar produto!'
+            status = 'error'
+            form = PedidoForm()
+
+        base_url = reverse('pedidos')
+        query_string =  urlencode({'msg': msg, 'status' : status})
+        return redirect(f'{base_url}?{query_string}')
+    
+    return HttpResponseNotAllowed(['POST'])
 
 def lista_pedidos(request):
-    return render(request, 'app/cliente_pedidos.html')
+    columns = ['Código', 'Nome Cliente', 'Email', 'Telefone', 'Código Produto']
+    pedidos = Pedido.objects.all()
+
+    return render(request, 'app/cliente_pedidos.html', {
+        'pedidos' : pedidos,
+        'pedido_columns' : columns
+    })
 
 def lista_produtos(request):
     columns = ['Código', 'Nome', 'Custo', 'Valor']

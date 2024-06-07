@@ -1,0 +1,27 @@
+.pedido-container {
+    padding: 8px;
+    border: 1px solid;
+    border-radius: 8px;
+}
+
+.main-container {
+    width: 100%;
+    display: flex;
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    justify-content: start;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.title-content {
+    text-align: center;
+}
+
+.title-content h1 {
+    font-size: 52px;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}

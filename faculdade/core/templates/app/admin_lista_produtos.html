@@ -12,7 +12,7 @@
     <main class="main-container">
         <section class="produtos-container">
 
-            {% include "../model/table.html" %}
+            {% include "../model/table.html" with arr_columns=produtos_columns arr=produtos template=1 %}
 
         </section>
 

@@ -1,15 +1,21 @@
 <header class="topbar">
     <div class="topbar-content">
         <div class="topbar-title">
-            <h1>Controle de Pedidos</h1>
+            <a href="/">
+                <h1> Controle de Pedidos </h1>
+            </a>
         </div>
         <div class="user-content">
             {% if logado %}
                 <div class="user-name"> {{user_name}} </div>
             {% else %}
                 <div class="login-content">
-                    <button> Logar </button>
-                    <button> Cadastrar </button>
+                    <a class="btn btn-light" href="{% url 'login' %}">
+                        Logar
+                    </a>
+                    <a class="btn btn-light" href="{% url 'login' %}">
+                        Cadastrar
+                    </a>
                 </div>
             {% endif %}
         </div>
@@ -18,10 +24,19 @@
         <div class="breadcrumb-title">
             <h2> {{bread_name}} </h2>
         </div>
+
+        {% if bread_button_name %}
         <div class="breadcrumb-button">
-            <a href="#modal-template" rel="modal:open"> 
-                <button class="btn btn-light"> {{bread_button_name}} </button>
-            </a>
+            {% if link_content %}
+                <a href="{{link_content}}"> 
+                    <button class="btn btn-light"> {{bread_button_name}} </button>
+                </a>
+            {% else %}
+                <a href="#modal-template" rel="modal:open"> 
+                    <button class="btn btn-light"> {{bread_button_name}} </button>
+                </a>
+            {% endif %}
         </div>
+        {% endif %}
     </nav>
 </header>
